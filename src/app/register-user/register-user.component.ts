@@ -35,9 +35,9 @@ export class RegisterUserComponent implements OnInit {
 
 
   public doUserRegistration() {
-    this.user.userAge = Number(this.userAge)
+    // this.user.userAge = Number(this.userAge)
     this.service.createUser(this.user).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.message = data
     },
       error => console.log(error));
