@@ -10,7 +10,7 @@ import { UserItemModel } from './UserItemModel';
 export class AppServiceService {
 
 
-  private baseUrl="http://localhost:8081/divcon/"
+  private baseUrl="https://divide-conquer-backend.onrender.com/divcon/"
   constructor(private http:HttpClient) { }
 
   getAllUsers():Observable<User[]>{
