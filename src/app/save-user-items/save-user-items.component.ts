@@ -56,7 +56,9 @@ export class SaveUserItemsComponent implements OnInit {
     },
       error => console.log(error));
   }
-
+  public myalert() {
+    alert("Items saved successfully");
+  }
   public saveUserItems() {
     this.item.itemPrice = Number(this.itemPrice)
     this.userItem.items.push(this.item)
@@ -65,6 +67,7 @@ export class SaveUserItemsComponent implements OnInit {
     this.service.createUserItem(this.userItem).subscribe(
       data => {
         //console.log(data)
+        // this.message=data
       }, error => console.log(error)
     )
     this.userItem.items = []

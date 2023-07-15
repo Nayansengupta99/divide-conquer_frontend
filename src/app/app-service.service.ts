@@ -28,12 +28,15 @@ export class AppServiceService {
 
 
   getEveryoneTotalExpenditureByTripName(tripName:String){
-    return this.http.get(`${(this.baseUrl)+"/totalexpenditure/"+tripName}`)
+    return this.http.get(`${(this.baseUrl)+"totalexpenditure/"+tripName}`)
   }
 
   getEveryOneShareByTripName(tripName:String){
-    return this.http.get(`${(this.baseUrl)+"/share/"+tripName}`)
+    return this.http.get(`${(this.baseUrl)+"share/"+tripName}`)
   }
 
+  getAllTripNames(){
+    return this.http.get(`${(this.baseUrl)+"trips"}`)
+  }
 
 }

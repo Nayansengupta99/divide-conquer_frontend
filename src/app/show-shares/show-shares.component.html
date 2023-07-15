@@ -1,1 +1,96 @@
-<p>show-shares works!</p>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <fieldset>
+                    <legend class="text-center">Select your trip name to see further details <span class="req"><small>
+                                required *</small></span></legend>
+
+                    <div class="form-group">
+                        <label for="Name"><span class="req">* </span> Trip Names: <small>Select Trip Name</small> </label>
+                        <!-- <input required type="text" [(ngModel)]="user.userName" name="name" id="name" class="form-control phone" maxlength="28" placeholder="Enter your fullname..." /> -->
+                        <select class="form-control" [(ngModel)]="tripModel.tripName" (change)="getSelectedValue($event);showEachExpenditureAmountByTripName();showEachSharesByTripName()" name="Name" class="form-control">
+                       <option>-- Select Name --</option>
+                       <option [value]="tripName" *ngFor="let tripName of tripNames">
+                         {{tripName}}
+                       </option>
+                     </select>
+
+
+
+                    </div>
+
+                    <br>
+                    <div class="buttons">
+                        <!-- <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="saveUserItems()"> -->
+                        <!-- <button (click)="onClick(0);saveUserItems()" [loading]="loading[0]" (loadingChange)="onChange($event, 0)" cLoadingButton>Submit</button> -->
+                        <div class="action_btn">
+                            <button style='margin-right:40px;height: 45px; width: 80px; font-size: 10px;' (click)='toggleShowTable()' class="btn btn-primary">View Expenditures</button>
+                            <button style='margin-right:40px;height: 45px; width: 80px; font-size: 10px;' (click)='toggleShowTable1()' class="btn btn-primary">View Each Shares</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <!-- ends register form -->
+            <!-- second for to fiter user-->
+        </div>
+        <!-- ends col-6 -->
+
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()"> -->
+            <div class="container" id="content" #content>
+                <table *ngIf='showTable' style="width:100%" class="table table-hover table-dark">
+                    <thead class="bg-danger text-white text-upparcase">
+                        <tr>
+                            <th> Name</th>
+                            <th> Amt_Spent </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of eachExpenditureJson | keyvalue">
+                            <td> {{ data.key }} </td>
+                            <td> ₹ {{ data.value }} </td>
+
+
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <table *ngIf='showTable1' style="width:100%" class="table table-hover table-dark">
+                <thead class="bg-danger text-white text-upparcase">
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of eachShareJson | keyvalue">
+                        <td> {{ data.key }} </td>
+                        <td> ₹ {{ data.value }} </td>
+
+
+
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+</div>
